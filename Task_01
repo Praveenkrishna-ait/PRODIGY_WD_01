@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Navigation Menu</title>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: calibri;
+            background-image: url(furniture.avif);
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+
+        }
+
+        .showcase {
+            background-image:Url(furniture.avif);
+            opacity: 0.5;
+            width: auto;
+            height: auto;
+            background-position: center;
+        }
+
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background-color: #222;
+            padding: 10px 0;
+            z-index: 1000;
+            transition: background-color 0.3s ease;
+            
+        }
+
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 20px;
+            text-align: right;
+        }
+
+        nav ul li {
+            display: inline-block;
+            margin: 0 10px;
+        }
+
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            padding: 25px;
+            transition: color 0.3s ease;
+        }
+
+        .highlighted {
+            color: #ff9900;
+        }
+
+        .highlighted:hover {
+            color: #fff;
+        }
+
+        .scrolled {
+            background-color: #222;
+        }
+
+        .content {
+            margin-top: 50px;
+            color: #000000;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .content p {
+            font-weight: bold;
+            color: black;
+        }
+
+        .help {
+            font-weight: bold;
+            color: #000000;
+            text-align: center;
+        }
+
+        .help h1 {
+            color: #000;
+            font-weight: bold;
+        }
+
+        @media (max-width: 768px) {
+            nav ul li {
+                display: block;
+                margin: 10px 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <nav id="navbar">
+            <ul>
+                <li><a href="#home" class="highlighted">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+    <div id="home" class="content">
+        <h1>Welcome to our Furniture Store</h1>
+        <p>Welcome to our furniture heaven, where every piece tells a story of craftsmanship and comfort. <br>
+        Step inside and immerse yourself in a world of style and sophistication. <br>
+        From sleek modern designs to timeless classics, we invite you to
+        explore and discover the perfect furnishings to elevate your home.<br>
+        Indulge in our exquisite collection, where every piece embodies quality and luxury. Let us help you create your ideal
+        home ambiance.</p>
+        <p><a href="#about"> About Me</a></p>
+    </div>
+
+    <div id="about" class="content">
+        <h1>About Us</h1>
+        <p>Step into our furniture store and discover a realm where style meets comfort, and functionality intertwines with
+        elegance.<br>
+        Our showroom beckons with an array of meticulously curated pieces, each meticulously crafted to elevate your
+        living space.<br>
+        Explore sofas that invite lounging, dining tables that gather loved ones, and beds that promise sweet
+        dreams.<br>
+        Immerse yourself in a symphony of textures, from sumptuous fabrics to polished woods, all harmonizing to create
+        a tapestry of sophistication.<br>
+        Whether you seek contemporary minimalism or timeless classics, our collection caters to
+        diverse tastes and lifestyles. <br>
+        Experience the epitome of fine craftsmanship and transform your home into a sanctuary of
+        beauty and warmth. </p>
+        <p><a href="#services">Go to Services</a></p>
+    </div>
+
+    <div id="services" class="content">
+        <h1>Our Services</h1>
+        <p>Our services extend beyond more transactions; they embody a commitment to your satisfaction. <br>
+            From personalized design consultations to seamless delivery and assembly, we ensure a smooth and enjoyable experience. <br>
+            Let us guide you through every step, ensuring your vision becomes a reality with unparalleled care and attention to detail.</p>
+        <p><a href="#contact"> Contact Us</a></p>
+    </div>
+
+    <div id="contact" class="help">
+        <h1>Contact Us</h1>
+        <p>Need assistance or have inquiries? Our dedicated team is here to help. <br>
+        Reach out to us effortlessly through phone, email, or visit our showroom for a personalized experience. <br>
+        Let's collaborate to bring your furniture dreams to life.<br>
+        Contact us today and let's start creating your perfect living space together.</p>
+    </div>
+    <script>
+        window.onscroll = function () { scrollFunction() };
+
+        function scrollFunction() {
+            var navbar = document.getElementById("navbar");
+            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                navbar.classList.add("scrolled");
+            } else {
+                navbar.classList.remove("scrolled");
+            }
+        }
+
+        var menuItems = document.querySelectorAll('nav ul li a');
+        menuItems.forEach(function (item) {
+            item.addEventListener('mouseover', function () {
+                menuItems.forEach(function (link) {
+                    link.classList.remove('highlighted');
+                });
+                this.classList.add('highlighted');
+            });
+        });
+    </script>
+</body>
+
+</html>
